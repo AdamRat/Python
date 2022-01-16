@@ -1,3 +1,4 @@
+from distutils import command
 from tkinter.constants import HIDDEN
 import requests, lxml.html as lh, tkinter as tk
 
@@ -86,6 +87,7 @@ def error(obliczanie):#obsługa błędów
     tk.Button(error,text="Zamknij",command=error.destroy).grid(row=1,column=0)#przycisk do zamknięcia
 
 def otwozNoweOkno(key):
+    wartosc.set(0.0)
     obliczanie=tk.Toplevel(main_window)#stworzenie nowego okna
     wartosci=wybierzWartosc(key,makeDictFromCol(separateValues()))#pobranie wartości dla danego elementu tablicy 
     tk.Label(obliczanie, text=key+", "+wartosci[0]).grid(row=0, column=0)#wypisanie aktualnego kursu
@@ -96,7 +98,7 @@ def otwozNoweOkno(key):
     tk.Button(obliczanie,text=wartosci[0]+" na PLN" ,command = lambda:  pobierzWartosc2(wartosci,obliczanie)).grid(row=3, column=1)#wywołanie metody obliczającej
     tk.Label(obliczanie,textvariable=wartosc).grid(row=4, column=0)#wypianie wyliczonej wartości
     tk.Button(obliczanie,text="Zamknij",command=obliczanie.destroy).grid(row=5,column=0)#przycisk zamknięcia
-    
+
 def createButtons(Dict1):
     rows=1
     columns=0
